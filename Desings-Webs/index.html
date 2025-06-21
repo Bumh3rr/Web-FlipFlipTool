@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desings Webs</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+</head>
+
+<body>
+
+    <header class="header">
+        <h1 class="title">Desings Webs</h1>
+
+        <button id="open-sidebar-button" onclick="openSidebar()" aria-label="open sidebar" aria-expanded="false"
+            aria-controls="navbar">
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9">
+                <path
+                    d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z" />
+            </svg>
+        </button>
+        
+        <nav class="nav">
+            <ul>
+                <li>
+                    <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
+                            fill="#c9c9c9">
+                            <path
+                                d="m480-444.62-209.69 209.7q-7.23 7.23-17.5 7.42-10.27.19-17.89-7.42-7.61-7.62-7.61-17.7 0-10.07 7.61-17.69L444.62-480l-209.7-209.69q-7.23-7.23-7.42-17.5-.19-10.27 7.42-17.89 7.62-7.61 17.7-7.61 10.07 0 17.69 7.61L480-515.38l209.69-209.7q7.23-7.23 17.5-7.42 10.27-.19 17.89 7.42 7.61 7.62 7.61 17.7 0 10.07-7.61 17.69L515.38-480l209.7 209.69q7.23 7.23 7.42 17.5.19 10.27-7.42 17.89-7.62 7.61-17.7 7.61-10.07 0-17.69-7.61L480-444.62Z" />
+                        </svg>
+                    </button>
+                </li>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
+
+    <div class="wave-1">
+        <svg class="view-round" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#E0E1DD"
+                d="M28.3,-27.6C35.4,-21.3,38.7,-10.7,39.3,0.6C39.9,11.8,37.6,23.6,30.6,33.7C23.6,43.8,11.8,52.2,-2.8,55.1C-17.4,57.9,-34.9,55.1,-51.3,45C-67.8,34.9,-83.2,17.4,-84.4,-1.2C-85.7,-19.9,-72.7,-39.8,-56.2,-46C-39.8,-52.3,-19.9,-45,-4.6,-40.4C10.7,-35.8,21.3,-33.9,28.3,-27.6Z"
+                transform="translate(100 100)" />
+        </svg>
+    </div>
+
+    <div class="wave-2">
+        <svg class="view-round" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#E0E1DD"
+                d="M36.8,-48C43.9,-38,43.1,-22.7,47.9,-6.7C52.8,9.2,63.3,25.9,58.8,34.2C54.3,42.4,34.8,42.2,17.6,48.6C0.4,54.9,-14.5,67.9,-26.4,66.3C-38.4,64.7,-47.4,48.6,-52.8,33.3C-58.2,18.1,-60,3.6,-56.3,-8.6C-52.6,-20.8,-43.4,-30.8,-33.1,-40.2C-22.8,-49.6,-11.4,-58.5,1.8,-60.6C14.9,-62.7,29.8,-58,36.8,-48Z"
+                transform="translate(100 100)" />
+        </svg>
+    </div>
+
+    <main class="container">
+        <section id="inicio" class="inicio">
+            <div class="text">
+
+                <h1>Desings Webs</h1>
+                <p>
+                    Lorem ipsum odor amet, consectetuer adipiscing elit. Eros phasellus lobortis finibus cras mollis
+                    adipiscing orci eget. Facilisis lacinia hac mollis ad nullam. Finibus cubilia himenaeos felis magnis
+                    himenaeos et. Nec montes adipiscing nostra cubilia potenti leo cursus purus. Maximus ac scelerisque
+                    integer erat faucibus proin.
+                </p>
+                <div class="contact">
+                    <a target="_blank" href="https:www.google.com">
+                        <i class="ri-facebook-fill"></i>
+                        Whatsapp
+                    </a>
+                    <a id="button-whatsapp" target="_blank" href="https:www.google.com">
+                        <i class="ri-whatsapp-line"></i>
+                        Facebook
+                    </a>
+                </div>
+            </div>
+            <img class="image-alt" src="resources/svg/Ecommerce web page-pana.svg" alt="">
+        </section>
+
+        <section id="nosotros" class="inicio">
+            <div>
+                <h2>Desings Webs</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit
+            </div>
+            <img src="resources/svg/Ecommerce web page-pana.svg" alt="">
+        </section>
+
+        <section id="servicios" class="inicio">
+            <div>
+                <h2>Desings Webs</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit
+            </div>
+            <img src="resources/svg/Ecommerce web page-pana.svg" alt="">
+        </section>
+
+
+        <section id="contacto" class="inicio">
+            <div>
+                <h2>Desings Webs</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit
+            </div>
+            <img src="resources/svg/Ecommerce web page-pana.svg" alt="">
+        </section>
+
+    </main>
+
+</body>
+
+<!-- Animation-->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!-- javaScritp -->
+<script src="js.js"></script>
+
+</html>
