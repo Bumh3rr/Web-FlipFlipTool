@@ -6,10 +6,8 @@ export class ModalManager {
     openModal(modalId = 'info', title = '', subtitle = '', callback = null) {
         const modal = document.getElementById(`modal-${modalId}`);
         if (!modal) return;
-
         modal.classList.add('show');
 
-        // Actualizar contenido si se proporcionan
         if (title) {
             const titleElement = document.getElementById(`title-${modalId}`);
             if (titleElement) titleElement.textContent = title;
@@ -53,12 +51,16 @@ export class ModalManager {
     setupEscapeKeyListener() {
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
-                const openModal = document.querySelector('.modal.show');
-                if (openModal) {
-                    this.closeModal(openModal.id);
-                }
+                this.closeModal();
             }
         });
+    }
+
+    closeModalPop() {
+        const openModal = document.querySelector('.modal.show');
+        if (openModal) {
+            this.closeModal(openModal.id);
+        }
     }
 
     // Modal Types

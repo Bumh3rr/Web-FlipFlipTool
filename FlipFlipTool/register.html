@@ -49,8 +49,7 @@
         <h1>Registrarse FlipFlopTool</h1>
         <p>Únete con Nosotros para Gestionar tu Taller de Forma Correcta.
             ¡Regístrate ahora y empieza a Gestionar!</p>
-        <form action="/register" method="POST">
-
+        <form>
             <label for="firstname">Nombre Completo</label>
             <div class="input-split">
                 <div class="input-icon">
@@ -185,7 +184,7 @@
     <!-- Modal for Error registration -->
     <div class="modal" id="modal-error">
         <div class="modal-content">
-            <span class="close-button" id="closeModalBtn">
+            <span class="close-button" id="closeModalBtn" onclick="closeModal()">
                 <svg viewBox="0 0 20 20">
                     <path fill="#4D4C4B"
                         d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59L7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12L5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4" />
@@ -237,7 +236,7 @@
     <!-- Modal for Info registration -->
     <div class="modal" id="modal-info">
         <div class="modal-content">
-            <span class="close-button" id="closeModalBtn" onclick="closeModal('modal-info')">
+            <span class="close-button" id="closeModalBtn" onclick="closeModal()">
                 <svg viewBox="0 0 20 20">
                     <path fill="#4D4C4B"
                         d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59L7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12L5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4" />
@@ -277,7 +276,7 @@
                 <div class="form-card-input-bg"></div>
             </div>
             <p class="send-again" id="id-send-again" onclick="sendAgainOtpEmail()">Reenviar código</p>
-            <button class="button-verify-otp" type="submit">Verificar</button>
+            <button class="button-verify-otp" id="id-button-verify-otp" type="submit">Verificar</button>
         </form>
     </div>
 

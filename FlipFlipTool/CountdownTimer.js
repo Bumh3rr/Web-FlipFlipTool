@@ -7,7 +7,7 @@ export class CountdownTimer {
     }
 
     start(seconds, onFinish = null) {
-        this.stop(); // Limpiar cualquier contador anterior
+        this.stop();
         this.remainingSeconds = seconds;
         this.onFinishCallback = onFinish;
         

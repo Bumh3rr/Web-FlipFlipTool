@@ -1,5 +1,5 @@
 export class EmailService {
-    constructor(baseUrl = 'https://2b7a-200-68-170-86.ngrok-free.app') {
+    constructor(baseUrl = 'http://localhost:8080') {
         this.baseUrl = baseUrl;
     }
 

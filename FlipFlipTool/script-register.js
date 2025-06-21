@@ -19,25 +19,19 @@ var notyf = new Notyf({
 
 // Función principal de validación y envío
 async function validateAndSubmit() {
-    const validation = validationService.validateForm();
-
-    if (!validation.isValid) {
-        modalManager.openWarning(validation.message);
-        return;
-    }
-    const email = document.getElementById('email_user').value.trim();
-
     try {
+        const email = document.getElementById('email_user').value.trim();
+
         modalManager.closeModal(ModalManager.ModalType.INFO);
         showLoading();
 
-        await emailService.sendOTP(email);
+        //await emailService.sendOTP(email);
         countdownTimer.start(60, () => {
             countdownTimer.setClickHandler(() => sendAgainOtpEmail());
         });
 
         hideLoading();
-        showVericationOtp();
+        showVericationOtp(email);
         notyf.success('Código enviado correctamente, revise su correo electrónico');
     } catch (error) {
         hideLoading();
@@ -78,8 +72,13 @@ function hideLoading() {
     document.body.style.overflow = '';
 }
 
-function showVericationOtp() {
+function showVericationOtp(email) {
     document.getElementById('modal-otp').classList.add('show');
+    document.getElementById('id-form-card-email').textContent = email;
+}
+
+function closeModal() {
+    modalManager.closeModalPop();
 }
 
 // Inicializar cuando carga la página
@@ -91,7 +90,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Configurar evento del botón de registro
     document.getElementById('button-register').addEventListener('click', function (e) {
-        e.preventDefault();
+        e.preventDefault(); // <- 
+
+        const validation = validationService.validateForm();
+        if (!validation.isValid) {
+            modalManager.openWarning(validation.message);
+            return;
+        }
+
         modalManager.openInfo(
             'Información de Registro',
             'Por favor, confirme su información antes de continuar.',
@@ -103,3 +109,4 @@ document.addEventListener('DOMContentLoaded', function () {
 // Exponer funciones globales si es necesario
 window.validateAndSubmit = validateAndSubmit;
 window.sendAgainOtpEmail = sendAgainOtpEmail;
+window.closeModal = closeModal;
