@@ -6,7 +6,7 @@ export class CountdownTimer {
         this.onFinishCallback = null;
     }
 
-    start(seconds, onFinish = null) {
+    start(seconds = 60, onFinish = null) {
         this.stop();
         this.remainingSeconds = seconds;
         this.onFinishCallback = onFinish;
@@ -43,7 +43,7 @@ export class CountdownTimer {
             element.onclick = null;
         } else {
             element.textContent = 'Reenviar código';
-            element.style.color = '#007bff';
+            element.style.color = '#FF6B6B';
             element.style.cursor = 'pointer';
             element.style.textDecoration = 'underline';
         }

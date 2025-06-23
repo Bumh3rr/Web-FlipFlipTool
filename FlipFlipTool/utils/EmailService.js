@@ -9,8 +9,8 @@ export class EmailService {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'ngrok-skip-browser-warning': 'true',
+                    'Content-Type': 'application/json'
+                    //'ngrok-skip-browser-warning': 'true',
                 },
                 body: JSON.stringify({ email, type })
             });

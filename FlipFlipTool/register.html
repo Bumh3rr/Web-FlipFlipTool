@@ -7,8 +7,8 @@
     <title>Registrarse</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
-
 </head>
+
 <link rel="stylesheet" href="styles-register.css">
 
 <body>
@@ -24,7 +24,7 @@
             </svg>
         </button>
 
-        <nav hidden class="nav">
+        <nav class="nav">
             <ul>
                 <li>
                     <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
@@ -39,6 +39,8 @@
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#registrar">Registrarse</a></li>
+                <li class="button"><a class="button-content" href="#registrar">Descargar</a></li>
             </ul>
         </nav>
     </header>
@@ -66,14 +68,14 @@
             <label for="email_user">Correo</label>
             <div class="input-icon">
                 <i class="ri-mail-line"></i>
-                <input type="email" placeholder="Ingrese el correo electrónico" id="email_user" name="email_user"
+                <input type="email" placeholder="Ingrese el correo electrónico" id="email" name="email"
                     required>
             </div>
 
             <label for="phone_user">Teléfono</label>
             <div class="input-icon">
-                <i class="ri-phone-fill"></i>
-                <input type="tel" placeholder="Ingrese su número teléfonico" id="phone_user" name="phone_user" required>
+                <i class="ri-phone-fill"> +52</i>
+                <input type="tel" placeholder="   -   -" maxlength="10" id="phone" name="phone" required>
             </div>
 
             <label for="username">Nombre de usuario</label>
@@ -96,55 +98,6 @@
                     name="confirm_password" required>
                 <i class="ri-eye-off-line toggle-password" onclick="togglePassword('confirm_password', this)"></i>
             </div>
-
-            <h3>Información del Taller</h3>
-
-            <label for="workshop_name">Nombre del Taller</label>
-            <div class="input-icon">
-                <i class="ri-user-line"></i>
-                <input type="text" placeholder="Ingrese el nombre del Taller" id="workshop_name" name="workshop_name"
-                    required>
-            </div>
-
-            <label for="workshop_phone">Teléfono</label>
-            <div class="input-icon">
-                <i class="ri-phone-fill"></i>
-                <input type="tel" placeholder="Ingrese el número teléfonico del taller" id="workshop_phone"
-                    name="workshop_phone" required>
-            </div>
-
-            <label for="address_state">Estado</label>
-            <div class="form-group">
-                <select class="form-select" id="address_state" name="address_state" required>
-                    <option value="">Seleccione el Estado</option>
-                </select>
-            </div>
-
-            <label for="address_municipality">Municipio</label>
-            <div class="form-group">
-                <select class="form-select" id="address_municipality" name="address_municipality" required>
-                    <option value="">Seleccione el Municipio</option>
-                </select>
-            </div>
-
-            <label for="address_colony">Colonia y Calle</label>
-            <div class="input-split">
-                <div class="input-icon">
-                    <i class="ri-home-4-line"></i>
-                    <input type="text" placeholder="Ingresa la colonia" id="address_colony" name="address_colony"
-                        required>
-                </div>
-
-                <div class="input-icon">
-                    <i class="ri-home-4-line"></i>
-                    <input type="text" placeholder="Ingresa la calle" id="address_street" name="address_street"
-                        required>
-                </div>
-            </div>
-
-            <label for="address_references">Referencia</label>
-            <br>
-            <textarea name="address_references" id="address_references"></textarea>
 
             <!-- From Uiverse.io by ilkhoeri -->
             <div class="btn-continue-container">
@@ -261,7 +214,7 @@
 
     <!-- Loader -->
     <div class="background-loader" id="id-background-loader" hidden>
-        <div class="loader" id="id-loader">loading...</div>
+        <div class="loader" id="id-loader">Cargando...</div>
     </div>
 
     <!-- Modal for verification OTP Email -->
@@ -272,11 +225,11 @@
             <p class="form-card-email" id="id-form-card-email">exmaple@gmail.com</p>
             </p>
             <div class="form-card-input-wrapper">
-                <input class="form-card-input" placeholder="______" maxlength="6" type="tel">
+                <input id="code_otp" class="form-card-input" placeholder="______" maxlength="6" type="tel">
                 <div class="form-card-input-bg"></div>
             </div>
             <p class="send-again" id="id-send-again" onclick="sendAgainOtpEmail()">Reenviar código</p>
-            <button class="button-verify-otp" id="id-button-verify-otp" type="submit">Verificar</button>
+            <button class="button-verify-otp" id="id-button-verify-otp">Verificar</button>
         </form>
     </div>
 

@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
     --text: #000;
@@ -8,6 +7,20 @@
     --primary: oklch(46.49% 0.152 280.51);
     --secondary: oklch(31.89% 0.107 279.82);
     --accent: #FF6B6B;
+    --boder-radius: 8px;
+    --boder-radius-modal: 26px;
+
+    --color-input: #555555;
+    --color-input-focus: #FF6B6B80;
+    --color-placeholder: #4d4c4c;
+    --color-label: #bfbfbf;
+
+    --color-text: #FFF;
+
+    --background-modal: #eae9e9;
+    --color-border-modal: #cccccc90;
+    --color-text-modal: #333333;
+    --color-text-modal-secondary: #666666;
 }
 
 * {
@@ -17,18 +30,20 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: #FFF;
+    color: var(--color-text);
 }
 
 body {
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    /* Dynamic viewport height for mobile */
+    height: 100dvh;
     display: flex;
     flex-wrap: wrap;
-    position: relative;
-    background: linear-gradient(135deg, #262626 0%, #171717 100%);
     justify-content: center;
-    align-items: center;
+    margin: auto;
+    position: relative;
+    background: linear-gradient(135deg, #3e3e3e 0%, #171717 100%);
 }
 
 .header {
@@ -38,8 +53,6 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 5%;
-    position: static;
-    top: 0;
 }
 
 .title {
@@ -51,7 +64,6 @@ body {
 .title a {
     font-family: "Caveat Brush", system-ui;
     text-decoration: none;
-    color: #FFF;
 }
 
 #open-sidebar-button {
@@ -102,12 +114,55 @@ body {
 }
 
 .nav ul li a:hover {
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid var(--color-text);
 }
 
+.button {
+    position: relative;
+    overflow: hidden;
+    height: 2.1rem;
+    padding: 0 1rem;
+    border-radius: 1.5rem;
+    background: transparent;
+    background-size: 400%;
+    border-bottom: none;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.button:hover::before {
+    transform: scaleY(1);
+    border-bottom: none;
+}
+
+.button-content {
+    position: relative;
+    z-index: 1;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--color-input-focus) 10.8%, var(--accent) 94.3%);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.button:active {
+    scale: 0.9;
+}
+
+
 .register-container {
-    width: 550px;
-    min-width: 250px;
+    width: auto;
+    max-width: 480px;
+    height: 540px;
     display: flex;
     flex-flow: column nowrap;
     border: 1px #404040 solid;
@@ -116,7 +171,9 @@ body {
     padding: 20px;
     background-color: #171717;
     overflow: auto;
-    margin-bottom: 10dvh;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10vh;
 }
 
 .register-container h1 {
@@ -150,41 +207,47 @@ body {
 .input-icon i {
     position: absolute;
     left: 10px;
-    color: #888;
+    color: var(--color-input);
     font-size: 0.9em;
     transition: color 0.2s ease;
 }
 
 .register-container input {
     width: 100%;
-    padding: 5px 10px;
     background: transparent;
-    border: 1px solid #555;
-    border-radius: 8px;
-    color: white;
+    padding: 5px 20px;
+
+    border: 1px solid var(--color-input);
+    border-radius: var(--boder-radius);
+    color: var(--color-text);
     font-size: 13.5px;
     transition: border 0.3s ease;
     padding-left: 2em;
-    caret-color: #FF6B6B90;
+    caret-color: var(--color-input-focus);
+}
+
+#phone{
+    padding: 5px 20px;
+    padding-left: 60px;
 }
 
 .register-container input:focus {
     outline: none;
-    border: 1px #FF6B6B80 solid;
+    border: 1px var(--color-input-focus) solid;
 }
 
 .register-container input::placeholder {
-    color: #4d4c4c;
+    color: var(--color-placeholder);
     font-size: 12px;
 }
 
 .input-icon:focus-within i {
-    color: #FF6B6B80;
+    color: var(--color-input-focus);
 }
 
 .register-container label {
     font-size: 11px;
-    color: #bfbfbf;
+    color: var(--color-label);
 }
 
 .input-icon .toggle-password {
@@ -192,46 +255,25 @@ body {
     left: auto;
     cursor: pointer;
     position: absolute;
-    color: #888;
+    color: var(--color-input);
     transition: color 0.2s;
 }
 
 .input-icon .toggle-password:hover {
-    color: #FF6B6B;
+    color: var(--accent);
 }
 
-.form-select {
-    width: 100%;
-    padding: 5px;
-    background: #404040;
-    border: 1px solid #555;
-    border-radius: 8px;
-    color: white;
-}
-
-.register-container textarea {
-    background-color: transparent;
-    border-radius: 8px;
-    color: white;
-    outline: none;
-    padding: 4px 8px;
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    width: 100%;
-    height: 80px;
-}
 
 /*  -------- button Register --------  */
 .btn-continue-user {
     --primary-color: var(--accent);
-    --secondary-color: #fff;
+    --secondary-color: var(--color-text);
     --hover-color: #111;
     --arrow-width: 10px;
     --arrow-stroke: 2px;
     box-sizing: border-box;
     border: 0;
-    border-radius: 20px;
+    border-radius: var(--boder-radius);
     color: var(--secondary-color);
     padding: 0.65em 1.5em;
     background: var(--primary-color);
@@ -306,7 +348,6 @@ body {
     animation: fadeIn 0.5s ease;
 }
 
-
 .modal.show {
     display: flex;
     animation: fadeIn 0.5s ease;
@@ -327,8 +368,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #eae9e9;
-    border-radius: 16px;
+    background-color: var(--background-modal);
+    border-radius: var(--boder-radius-modal);
     padding: 30px 40px;
     min-width: 350px;
     box-shadow: 0 3px 9px rgba(0, 0, 0, 0.2);
@@ -340,7 +381,7 @@ body {
     top: 25px;
     right: 25px;
     cursor: pointer;
-    border: 2px solid #cccccc90;
+    border: 2px solid var(--color-border-modal);
     padding: 2px;
     border-radius: 9px;
     width: 32px;
@@ -351,13 +392,12 @@ body {
 .close-button svg {
     width: 20px;
     height: 20px;
-    fill: #b43f3f;
 }
 
 .checkmark {
     width: 40px;
     height: 40px;
-    border-radius: 8px;
+    border-radius: var(--boder-radius);
     padding: 6px;
     box-shadow: 1px 3px 9px rgba(0, 0, 0, 0.15);
 }
@@ -386,7 +426,7 @@ body {
 .modal-content h2 {
     font-weight: 700;
     font-size: 1.5rem;
-    color: #333;
+    color: var(--color-text-modal);
     margin-top: 8px;
     margin-bottom: 10px;
 }
@@ -394,18 +434,18 @@ body {
 .modal-content p {
     font-weight: 500;
     font-size: 0.8rem;
-    color: #666;
+    color: var(--color-text-modal-secondary);
     margin-bottom: 20px;
     opacity: 0.6;
 }
 
 .action-button {
     background-color: transparent;
-    color: #333;
-    border: 2px solid #cccccc90;
+    color: var(--color-text-modal);
+    border: 2px solid var(--color-border-modal);
     width: 90%;
     padding: 9px 20px;
-    border-radius: 9px;
+    border-radius: var(--boder-radius);
     cursor: pointer;
     font-weight: 600;
     font-size: 0.9rem;
@@ -415,10 +455,10 @@ body {
 
 .action-button-accentColor {
     color: #333;
-    border: 2px solid #cccccc90;
+    border: 2px solid var(--color-border-modal);
     width: 90%;
     padding: 9px 20px;
-    border-radius: 9px;
+    border-radius: var(--boder-radius);
     cursor: pointer;
     font-weight: 600;
     font-size: 0.9rem;
@@ -427,19 +467,22 @@ body {
         transform 0.4s ease-out;
 }
 
+#btn-ok-error,
+#btn-ok-info,
+#btn-ok-warning {
+    color: var(--color-text);
+}
+
 #btn-ok-error {
     background-color: #ed4949;
-    color: #fff;
 }
 
 #btn-ok-info {
     background-color: #2f6cff;
-    color: #fff;
 }
 
 #btn-ok-warning {
     background-color: #FAD428;
-    color: #1e1e1e;
 }
 
 .action-button:hover,
@@ -509,8 +552,8 @@ body {
 .form-card {
     width: 420px;
     height: 350px;
-    border-radius: 1.2rem;
-    background-color: #fff;
+    border-radius: var(--boder-radius-modal);
+    background-color: var(--background-modal);
     padding: 1.3rem;
     color: #212121;
     text-align: center;
@@ -578,7 +621,7 @@ body {
 }
 
 .send-again {
-    color: #007bff;
+    color: var(--accent);
     font-size: 14px;
     text-decoration: underline;
 }
@@ -591,12 +634,12 @@ body {
     position: absolute;
     width: 180px;
     margin: auto;
-    color: white;
+    color: var(--color-text);
     border: none;
     text-align: center;
     background-color: #212121;
     font-size: 1.2rem;
-    border-radius: 0.8rem;
+    border-radius: var(--boder-radius);
     padding: 0.8rem 3rem;
     bottom: 2rem;
     left: 0;

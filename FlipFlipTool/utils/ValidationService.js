@@ -19,7 +19,7 @@ export class ValidationService {
 
     validateField(value, type) {
         if (!value || value.trim() === '') return false;
-        
+
         switch (type) {
             case 'phone':
                 return this.validateMexicanPhone(value);
@@ -42,20 +42,17 @@ export class ValidationService {
         const fields = [
             { id: 'firstname', type: 'text', message: 'El nombre debe tener al menos 3 caracteres y solo contener letras' },
             { id: 'lastname', type: 'text', message: 'El apellido debe tener al menos 3 caracteres y solo contener letras' },
-            { id: 'email_user', type: 'email', message: 'El correo electrónico no tiene un formato válido' },
-            { id: 'phone_user', type: 'phone', message: 'El teléfono debe tener un formato válido (10 dígitos o con código de área)' },
+            { id: 'email', type: 'email', message: 'El correo electrónico no tiene un formato válido' },
+            { id: 'phone', type: 'phone', message: 'El teléfono debe tener un formato válido (10 dígitos o con código de área)' },
             { id: 'username', type: 'username', message: 'El nombre de usuario debe tener al menos 3 caracteres y solo contener letras, números o guiones bajos' },
             { id: 'password', type: 'password', message: 'La contraseña debe tener al menos 6 caracteres' },
-            { id: 'workshop_name', type: 'text', message: 'El nombre del taller debe tener al menos 3 caracteres y solo contener letras' },
-            { id: 'workshop_phone', type: 'phone', message: 'El teléfono del taller debe tener un formato válido' },
-            { id: 'address_colony', type: 'address', message: 'La colonia debe tener al menos 3 caracteres' },
-            { id: 'address_street', type: 'address', message: 'La calle debe tener al menos 3 caracteres' }
+            { id: 'confirm_password', type: 'password', message: 'La confirmación de contraseña debe coincidir con la contraseña' }
         ];
 
         for (const field of fields) {
             const element = document.getElementById(field.id);
             if (!element) continue;
-            
+
             const value = element.value.trim();
             if (!this.validateField(value, field.type)) {
                 return { isValid: false, message: field.message };
@@ -69,13 +66,17 @@ export class ValidationService {
             return { isValid: false, message: 'Las contraseñas no coinciden' };
         }
 
-        // Validar selects
-        const state = document.getElementById('address_state').value;
-        const municipality = document.getElementById('address_municipality').value;
-        
-        if (!state) return { isValid: false, message: 'Debe seleccionar un estado' };
-        if (!municipality) return { isValid: false, message: 'Debe seleccionar un municipio' };
-
         return { isValid: true, message: 'Validación exitosa' };
+    }
+
+
+    validateOTP(code) {
+        if (!code || code.length < 6) {
+            return { isValid: false, message: 'El código OTP debe tener al menos 6 caracteres' };
+        }
+        if (!/^\d+$/.test(code)) {
+            return { isValid: false, message: 'El código OTP debe contener solo números' };
+        }
+        return { isValid: true, message: 'Código OTP válido' };
     }
 }
